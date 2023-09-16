@@ -1,0 +1,391 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 34, 0.0666666667);
+}
+button:hover {
+  opacity: 0.8;
+}
+button.copied {
+  background-color: hsl(257, 27%, 26%) !important;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  font-size: 18px;
+  color: hsl(260, 8%, 14%);
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+nav,
+main > section,
+footer {
+  padding: 37px 108px;
+}
+
+button.cyan {
+  background-color: hsl(180, 66%, 49%);
+  color: hsl(180, 38%, 97%);
+  padding: 7px 16px;
+}
+button.cyan.rounded-full {
+  border-radius: 999px;
+}
+button.cyan.rounded {
+  border-radius: 8px;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+nav > ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 27px;
+}
+nav > ul > li {
+  color: hsl(257, 7%, 63%);
+  cursor: pointer;
+}
+nav > ul > li:hover {
+  color: hsl(255, 11%, 22%);
+}
+nav #navBarBtn {
+  display: none;
+  cursor: pointer;
+}
+nav .nav-mobile {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: hsl(257, 27%, 26%);
+  color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2666666667);
+  position: absolute;
+  right: 80px;
+  z-index: 1;
+}
+nav .nav-mobile > a {
+  padding: 0.5rem;
+}
+nav .nav-mobile > button {
+  margin: 0.3rem;
+  width: 200px;
+}
+
+.first-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 144px;
+}
+.first-section > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 18px;
+}
+.first-section > div > h1 {
+  line-height: 1.2;
+  font-size: 64px;
+}
+.first-section > div > p {
+  color: hsl(257, 7%, 63%);
+}
+.first-section > img {
+  width: max(52%, 400px);
+  transform: translateX(120px) scale(1.1);
+}
+
+.second-section {
+  background-color: color-mix(in oklab, hsl(257, 7%, 63%), white 80%);
+}
+.second-section > *:not(.url-shortener-container) {
+  margin-bottom: 117px;
+}
+.second-section > .url-shortener-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 18px;
+  transform: translateY(-100px);
+}
+.second-section > .url-shortener-container > :first-child {
+  background-image: url("../images/bg-shorten-desktop.svg");
+  background-color: hsl(257, 27%, 26%);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 18px;
+  padding: 36px 46.8px;
+}
+.second-section > .url-shortener-container > .shortened-url-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 9px;
+}
+.second-section > .url-shortener-container > .shortened-url-container > div {
+  background-color: white;
+  padding: 18px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.second-section > .url-shortener-container > .shortened-url-container > div > span {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.second-section > .url-shortener-container > .shortened-url-container .shortened-url {
+  color: hsl(180, 66%, 49%);
+  font-size: 16px;
+}
+.second-section > .url-shortener-container #message {
+  text-align: center;
+}
+.second-section > .url-shortener-container #message.success {
+  background-color: color-mix(in oklab, hsl(180, 66%, 49%), white);
+  border-radius: 8px;
+  border: 2px solid hsl(180, 66%, 49%);
+  color: hsl(180, 66%, 49%);
+}
+.second-section > .url-shortener-container #message.error {
+  background-color: color-mix(in oklab, hsl(0, 87%, 67%), white);
+  border-radius: 8px;
+  border: 2px solid hsl(0, 87%, 67%);
+  color: hsl(0, 87%, 67%);
+}
+.second-section > .url-shortener-container #message.hidden {
+  display: none;
+}
+.second-section > .url-shortener-container input {
+  padding: 18px 27px;
+  border-radius: 8px;
+  flex-grow: 1;
+  font-size: 18px;
+}
+.second-section > .url-shortener-container input.error {
+  border: 1px solid hsl(0, 87%, 67%);
+}
+.second-section > .url-shortener-container input.error::placeholder {
+  color: hsl(0, 87%, 67%);
+}
+.second-section > .stats {
+  text-align: center;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.second-section > .stats p {
+  color: hsl(257, 7%, 63%);
+}
+.second-section > .statistics-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 18px;
+}
+.second-section > .statistics-info > div {
+  padding: 18px;
+  position: relative;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.0666666667);
+}
+.second-section > .statistics-info > div > * {
+  margin-top: 36px;
+}
+.second-section > .statistics-info > div:nth-child(2) {
+  transform: translateY(50px);
+  position: relative;
+}
+.second-section > .statistics-info > div:nth-child(3) {
+  transform: translateY(100px);
+}
+.second-section > .statistics-info small {
+  color: hsl(257, 7%, 63%);
+}
+.second-section > .statistics-info img {
+  position: absolute;
+  top: -40px;
+  margin-top: 0;
+  background-color: hsl(260, 8%, 14%);
+  padding: 18px;
+  border-radius: 999px;
+}
+
+.third-section {
+  background-color: hsl(257, 27%, 26%);
+  background-image: url("../images/bg-boost-desktop.svg");
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 27px;
+}
+.third-section > button {
+  padding: 9px 27px;
+}
+
+footer {
+  background-color: hsl(260, 8%, 14%);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 27px;
+}
+footer li {
+  font-size: 14px;
+  cursor: pointer;
+}
+footer li:hover {
+  color: hsl(180, 66%, 49%);
+}
+footer > .footer-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-grow: 1;
+  gap: 18px;
+}
+footer > .footer-nav > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 9px;
+}
+footer > .footer-nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3px;
+}
+footer .icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+footer .icons svg:hover {
+  fill: hsl(180, 66%, 49%);
+}
+footer svg {
+  fill: #FFF;
+  cursor: pointer;
+}
+
+.hidden {
+  scale: 0;
+}
+
+@media (max-width: 920px) {
+  nav,
+  main > section,
+  footer {
+    padding: 27px;
+  }
+  nav {
+    align-items: flex-start;
+  }
+  nav li, nav button:not(.nav-mobile button) {
+    display: none;
+  }
+  nav .nav-mobile {
+    display: flex;
+    transform: translate(15%, 8%);
+    transform-origin: 115% 5%;
+    transition: scale 0.2s;
+  }
+  nav .nav-mobile > a:hover {
+    color: hsl(180, 66%, 49%);
+  }
+  nav #navBarBtn {
+    display: block;
+  }
+  .first-section {
+    text-align: center;
+    flex-direction: column;
+  }
+  .first-section > div {
+    align-items: center;
+  }
+  .first-section > img {
+    order: -1;
+    width: min(90%, 400px);
+    transform: translateX(0) scale(1.1);
+  }
+  .second-section > .url-shortener-container {
+    flex-direction: column;
+  }
+  .second-section > .statistics-info {
+    flex-direction: column;
+  }
+  .second-section .shortened-url-container > div {
+    flex-direction: column !important;
+  }
+  footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  footer .footer-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  footer .footer-nav > div {
+    align-items: center;
+  }
+  footer .footer-nav > div ul {
+    align-items: center;
+  }
+}
