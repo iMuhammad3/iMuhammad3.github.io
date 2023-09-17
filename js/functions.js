@@ -12,7 +12,7 @@ async function displayShortenedUrl(longUrl, shortUrl){
 // shorten the url using api
 export async function shortenUrl(longUrl) {
     try {
-      const response = await fetch('http://tinyurl.com/api-create.php', {
+      const response = await fetch('https://tinyurl.com/api-create.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
