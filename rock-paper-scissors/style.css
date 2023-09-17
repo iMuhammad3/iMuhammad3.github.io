@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background: radial-gradient(rgb(243, 252, 255), rgb(218, 218, 240));
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  color: color-mix(in oklab, midnightblue, #00000a);
+}
+body h1, body h2, body h3, body h4, body h5, body h6 {
+  font-weight: 600;
+}
+body svg:not(#settingBtn) {
+  font-size: 40px;
+}
+body button {
+  cursor: pointer;
+  border: none;
+  border-radius: 2px;
+  background: transparent;
+}
+body button#restartBtn {
+  font-size: 20px;
+  padding: 0.3rem 1rem;
+  background: linear-gradient(to top right, rgb(30, 53, 100), rgb(17, 33, 112));
+  color: #eee;
+}
+body button:hover {
+  opacity: 0.9;
+}
+body button:disabled {
+  cursor: not-allowed;
+}
+body .container {
+  position: relative;
+  width: 80%;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border: 1px solid midnightblue;
+}
+body .container .scores {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+body .container .scores > div {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+body .container #settingBtn {
+  fill: #eee;
+  stroke-width: 20px;
+  stroke: black;
+  position: absolute;
+  top: 0.4rem;
+  left: 0.4rem;
+  font-size: 25px;
+  padding: 0.3rem;
+  cursor: pointer;
+  transition: transform 0.4s;
+}
+body .container #settingBtn:hover {
+  transform: rotate(90deg);
+}
+body .modal-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+body .modal-container .modal {
+  position: relative;
+  padding: 1.5rem;
+  background: #eee;
+  border-radius: 1px;
+  box-shadow: 0 3px 20px rgba(0, 0, 34, 0.1333333333);
+}
+body .modal-container .modal > span.closeBtn {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.7rem;
+  cursor: pointer;
+  font-size: 25px;
+}
+body .modal-container .modal .rounds-select {
+  display: flex;
+  align-items: center;
+  gap: 0 0.4rem;
+}
+body .modal-container .modal .rounds-select select {
+  cursor: pointer;
+}
