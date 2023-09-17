@@ -344,6 +344,12 @@ footer{
         text-align: center;
         flex-direction: column;
         &>div{
+            &>h1{
+                font-size: $size-xlg + $size-md;
+                line-height: 1.4;
+            }
+        }
+        &>div{
             align-items: center;
         }
         &>img{

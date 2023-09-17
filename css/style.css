@@ -358,6 +358,10 @@ footer svg {
     text-align: center;
     flex-direction: column;
   }
+  .first-section > div > h1 {
+    font-size: 54px;
+    line-height: 1.4;
+  }
   .first-section > div {
     align-items: center;
   }
