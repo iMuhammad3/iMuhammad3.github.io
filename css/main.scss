@@ -110,6 +110,7 @@ nav{
     & #navBarBtn{
         display: none;
         cursor: pointer;
+        height: 1.4em;
     }
     & .nav-mobile{
         @include display($display: none,$direction: column);
@@ -355,14 +356,23 @@ footer{
     .second-section{
         &>.url-shortener-container{
             flex-direction: column;
+            & :first-child{
+                flex-direction: column;
+                gap: $size-sm;
+                & div{
+                    display: flex;
+                    flex-direction: column;
+                    gap: $size-md;
+                }
+            }
+            & .shortened-url-container{
+                &>div{
+                    flex-direction: column !important;
+                }
+            }
         }
         &>.statistics-info{
             flex-direction: column;
-        }
-        & .shortened-url-container{
-            &>div{
-                flex-direction: column !important;
-            }
         }
     }
 

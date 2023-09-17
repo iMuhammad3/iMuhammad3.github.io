@@ -81,6 +81,7 @@ nav > ul > li:hover {
 nav #navBarBtn {
   display: none;
   cursor: pointer;
+  height: 1.4em;
 }
 nav .nav-mobile {
   display: none;
@@ -368,11 +369,20 @@ footer svg {
   .second-section > .url-shortener-container {
     flex-direction: column;
   }
+  .second-section > .url-shortener-container :first-child {
+    flex-direction: column;
+    gap: 9px;
+  }
+  .second-section > .url-shortener-container :first-child div {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .second-section > .url-shortener-container .shortened-url-container > div {
+    flex-direction: column !important;
+  }
   .second-section > .statistics-info {
     flex-direction: column;
-  }
-  .second-section .shortened-url-container > div {
-    flex-direction: column !important;
   }
   footer {
     flex-direction: column;
