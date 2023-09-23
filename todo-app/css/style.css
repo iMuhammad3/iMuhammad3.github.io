@@ -1,0 +1,290 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: hsl(236, 33%, 92%);
+  color: hsl(235, 19%, 35%);
+  min-height: 100dvh;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+}
+body .background-img {
+  background-image: url("../images/bg-desktop-light.jpg");
+}
+@media (max-width: 750px) {
+  body .background-img {
+    background-image: url("../images/bg-mobile-light.jpg");
+  }
+}
+body > main > p {
+  color: hsl(236, 9%, 61%);
+}
+body .todo-container form input {
+  color: hsl(235, 19%, 35%);
+  background-color: hsl(0, 0%, 98%);
+}
+body .todo-container form input::placeholder {
+  color: hsl(236, 9%, 61%);
+}
+body .todo-container > .todos > .filters, body .todo-container > .todos > li {
+  background-color: hsl(0, 0%, 98%);
+}
+body .todo-container > .todos > li {
+  border-bottom-color: hsl(233, 11%, 84%);
+}
+body .todo-container > .todos > li.completed {
+  color: hsl(236, 9%, 61%);
+}
+body .todo-container > .todos > li > .circle::after {
+  background-color: hsl(0, 0%, 98%);
+}
+body .todo-container > .todos > .filters {
+  color: hsl(236, 9%, 61%);
+}
+body .todo-container > .todos > .filters span:not(body .todo-container > .todos > .filters > span:first-child):hover {
+  color: hsl(235, 19%, 35%);
+}
+
+body.dark {
+  background-color: hsl(235, 21%, 11%);
+  color: hsl(232, 16%, 55%);
+}
+body.dark .background-img {
+  background-image: url("../images/bg-desktop-dark.jpg");
+}
+@media (max-width: 750px) {
+  body.dark .background-img {
+    background-image: url("../images/bg-mobile-dark.jpg");
+  }
+}
+body.dark > main > p {
+  color: hsl(232, 10%, 42%);
+}
+body.dark .todo-container form input {
+  color: hsl(232, 16%, 55%);
+  background-color: hsl(235, 24%, 19%);
+}
+body.dark .todo-container form input::placeholder {
+  color: hsl(232, 10%, 42%);
+}
+body.dark .todo-container > .todos > .filters, body.dark .todo-container > .todos > li {
+  background-color: hsl(235, 24%, 19%);
+}
+body.dark .todo-container > .todos > li {
+  border-bottom-color: hsl(234, 39%, 85%);
+}
+body.dark .todo-container > .todos > li.completed {
+  color: hsl(232, 10%, 42%);
+}
+body.dark .todo-container > .todos > li > .circle::after {
+  background-color: hsl(235, 24%, 19%);
+}
+body.dark .todo-container > .todos > .filters {
+  color: hsl(236, 9%, 61%);
+}
+body.dark .todo-container > .todos > .filters span:not(body.dark .todo-container > .todos > .filters > span:first-child):hover {
+  color: hsl(235, 19%, 35%);
+}
+
+input {
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+img {
+  width: 100%;
+  height: 240px;
+}
+
+li {
+  list-style: none;
+}
+
+.background-img {
+  width: 100%;
+  height: 240px;
+  position: absolute;
+  z-index: -1;
+  background-size: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 28px;
+  margin-top: 80px;
+  width: min(92%, 500px);
+}
+main > header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+main > header > h1 {
+  letter-spacing: 10px;
+  color: white;
+}
+main > header #themeToggleBtn {
+  cursor: pointer;
+}
+main > header #themeToggleBtn > svg.hidden {
+  display: none;
+}
+main > p {
+  font-size: 14px;
+  text-align: center;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: "";
+  align-items: "";
+  gap: 18px;
+}
+.todo-container form input {
+  width: 100%;
+  padding: 18px 28px;
+  border-radius: 4px;
+}
+.todo-container > .todos {
+  display: flex;
+  flex-direction: column;
+  justify-content: "";
+  align-items: "";
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 40px rgba(0, 0, 0, 0.1333333333);
+}
+.todo-container > .todos > .filters, .todo-container > .todos > li {
+  width: 100%;
+  padding: 18px;
+}
+.todo-container > .todos > li {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  transition: transform 0.5s, opacity 0.5s;
+  gap: 12px;
+  cursor: pointer;
+  border-bottom: solid;
+}
+.todo-container > .todos > li > p {
+  max-width: 85%;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+.todo-container > .todos > li > .circle {
+  margin-top: -3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  position: relative;
+  z-index: 0;
+  background: linear-gradient(to top left, rgb(149, 81, 231), rgb(77, 206, 238));
+  border: none;
+}
+.todo-container > .todos > li > .circle::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  z-index: -1;
+  transition: 0.3s;
+}
+.todo-container > .todos > li.completed {
+  text-decoration: line-through;
+}
+.todo-container > .todos > li.completed .circle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to top left, rgb(149, 81, 231), rgb(77, 206, 238));
+  border: none;
+  position: relative;
+}
+.todo-container > .todos > li.completed .circle::before {
+  content: "✓";
+  position: absolute;
+  color: white;
+  font-size: 13px;
+}
+.todo-container > .todos > li.completed .circle::after {
+  opacity: 0;
+}
+.todo-container > .todos > li > .removeBtn {
+  opacity: 0;
+  margin-left: auto;
+  transition: opacity 0.2s;
+}
+.todo-container > .todos > li:hover > .removeBtn {
+  opacity: 1;
+}
+.todo-container > .todos > .filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+.todo-container > .todos > .filters > div {
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.todo-container > .todos > .filters > div > span.active {
+  color: rgb(47, 95, 229);
+}
+.todo-container > .todos > .filters span:not(.todo-container > .todos > .filters > span:first-child) {
+  cursor: pointer;
+}
+
+.fade-out {
+  transform: translateX(700px);
+  opacity: 0.3;
+}
+
+@media (max-width: 750px) {
+  body {
+    font-size: 16px;
+  }
+  .todo-container > .todos > li > .removeBtn {
+    opacity: 1;
+  }
+  .todo-container > .todos > .filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 18px 0;
+  }
+  .todo-container > .todos > .filters > :first-child {
+    order: 0;
+  }
+  .todo-container > .todos > .filters > :last-child {
+    order: 1;
+  }
+  .todo-container > .todos > .filters > div {
+    order: 2;
+    grid-column: span 2;
+  }
+}

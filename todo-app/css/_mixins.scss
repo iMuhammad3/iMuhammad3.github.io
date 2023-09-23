@@ -1,0 +1,59 @@
+@mixin display-flex($direction: row, $justify: center, $align: center){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin apply-themes($theme){
+    background-color: map-get($theme, bg-primary);
+    color: map-get($theme, very-dark-grayish-blue);
+    & .background-img{
+        background-image: url(map-get($theme, img-url));
+        @include mobile{
+            background-image: url(map-get($theme, img-url-mobile));
+        }
+    }
+    &>main{
+        &>p{
+            color: map-get($theme, dark-grayish-blue)
+        }
+    }
+    & .todo-container{
+        & form{
+            & input{
+                color: map-get($theme, very-dark-grayish-blue);
+                background-color: map-get($theme, bg-secondary);
+                &::placeholder{
+                    color: map-get($theme, dark-grayish-blue);
+                }
+            }
+        }
+        &>.todos{
+            &>.filters, &>li{
+                background-color: map-get($theme, bg-secondary);
+            }
+            &>li{
+                border-bottom-color: map-get($theme, light-grayish-blue);
+                &.completed{
+                    color: map-get($theme, dark-grayish-blue);
+                }
+                &>.circle::after{
+                    background-color: map-get($theme, bg-secondary);
+                }
+            }
+            &>.filters{
+                color: map-get($light-theme, dark-grayish-blue);
+                & span:not(&>span:first-child):hover{
+                    color: map-get($light-theme, very-dark-grayish-blue);
+                }
+            }
+        }
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 750px){
+        @content
+    }
+}
