@@ -264,6 +264,10 @@ main > p {
   opacity: 0.3;
 }
 
+.dragging {
+  opacity: 0.5;
+}
+
 @media (max-width: 750px) {
   body {
     font-size: 16px;

@@ -152,6 +152,75 @@ function updateLocalStorage(){
     localStorage.setItem('todoData', JSON.stringify(todoData))
 }
 
+/* ***** DRAG AND DROP ***** */
+
+todosEl.addEventListener('dragstart', dragStart);
+todosEl.addEventListener('dragover', dragOver);
+todosEl.addEventListener('drop', drop);
+todosEl.addEventListener('dragend', dragEnd);
+todosEl.addEventListener('dragleave', dragLeave);
+
+function dragStart(e) {
+  e.target.classList.add('dragging');
+}
+
+function dragOver(e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    const draggable = document.querySelector('.dragging');
+    const afterElement = getDragAfterElement(todosEl, e.clientY);
+    const filtersIndex = Array.from(todosEl.children).indexOf(filters);
+  
+    if (afterElement == null || afterElement.nextElementSibling === null) {
+      todosEl.insertBefore(draggable, filters);
+    } else if (
+      !afterElement.nextElementSibling.classList.contains('filters') &&
+      afterElement.nextElementSibling !== draggable
+    ) {
+      todosEl.insertBefore(draggable, afterElement.nextElementSibling);
+    } else if (
+      afterElement.nextElementSibling === filters &&
+      filtersIndex !== -1 &&
+      filtersIndex !== todosEl.children.length - 1
+    ) {
+      todosEl.insertBefore(draggable, filters);
+    }
+}
+
+// Function to get the element after which the dragged element should be placed
+function getDragAfterElement(container, y) {
+  const draggableElements = [...container.querySelectorAll('li:not(.dragging)')];
+  return draggableElements.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child };
+      } else {
+        return closest;
+      }
+    },
+    { offset: Number.NEGATIVE_INFINITY }
+  ).element;
+}
+
+function drop(e) {
+  e.preventDefault();
+}
+
+function dragEnd(e) {
+  e.target.classList.remove('dragging');
+  updateLocalStorage();
+}
+
+function dragLeave(e) {
+    if (e.target.classList.contains('todos')) {
+      e.target.classList.remove('dragging');
+    }
+}
+
+/* ***** ***** */
+
 // todo
 // filters ✓
 // localStorage ✓
