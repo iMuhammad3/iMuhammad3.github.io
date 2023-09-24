@@ -50,13 +50,10 @@ body .todo-container > .todos > li > .circle::after {
 body .todo-container > .todos > .filters {
   color: hsl(236, 9%, 61%);
 }
-body .todo-container > .todos > .filters span:not(body .todo-container > .todos > .filters > span:first-child):hover {
-  color: hsl(235, 19%, 35%);
-}
 
 body.dark {
   background-color: hsl(235, 21%, 11%);
-  color: hsl(232, 16%, 55%);
+  color: hsl(232, 19%, 61%);
 }
 body.dark .background-img {
   background-image: url("../images/bg-desktop-dark.jpg");
@@ -67,14 +64,14 @@ body.dark .background-img {
   }
 }
 body.dark > main > p {
-  color: hsl(232, 10%, 42%);
+  color: hsl(234, 13%, 45%);
 }
 body.dark .todo-container form input {
-  color: hsl(232, 16%, 55%);
+  color: hsl(232, 19%, 61%);
   background-color: hsl(235, 24%, 19%);
 }
 body.dark .todo-container form input::placeholder {
-  color: hsl(232, 10%, 42%);
+  color: hsl(234, 13%, 45%);
 }
 body.dark .todo-container > .todos > .filters, body.dark .todo-container > .todos > li {
   background-color: hsl(235, 24%, 19%);
@@ -83,16 +80,13 @@ body.dark .todo-container > .todos > li {
   border-bottom-color: hsl(234, 39%, 85%);
 }
 body.dark .todo-container > .todos > li.completed {
-  color: hsl(232, 10%, 42%);
+  color: hsl(234, 13%, 45%);
 }
 body.dark .todo-container > .todos > li > .circle::after {
   background-color: hsl(235, 24%, 19%);
 }
 body.dark .todo-container > .todos > .filters {
   color: hsl(236, 9%, 61%);
-}
-body.dark .todo-container > .todos > .filters span:not(body.dark .todo-container > .todos > .filters > span:first-child):hover {
-  color: hsl(235, 19%, 35%);
 }
 
 input {
@@ -116,7 +110,7 @@ li {
   height: 240px;
   position: absolute;
   z-index: -1;
-  background-size: 100%;
+  background-size: 100% 100%;
 }
 
 main {
@@ -173,7 +167,7 @@ main > p {
 }
 .todo-container > .todos > .filters, .todo-container > .todos > li {
   width: 100%;
-  padding: 18px;
+  padding: 12px 18px;
 }
 .todo-container > .todos > li {
   display: flex;
@@ -186,9 +180,10 @@ main > p {
   border-bottom: solid;
 }
 .todo-container > .todos > li > p {
-  max-width: 85%;
+  flex-basis: 79%;
   line-height: 1.4;
   word-wrap: break-word;
+  hyphens: auto;
 }
 .todo-container > .todos > li > .circle {
   margin-top: -3px;
@@ -231,6 +226,9 @@ main > p {
 }
 .todo-container > .todos > li > .removeBtn {
   opacity: 0;
+  width: 30px;
+  height: 30px;
+  padding: 6px;
   margin-left: auto;
   transition: opacity 0.2s;
 }
@@ -250,13 +248,16 @@ main > p {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 12px;
 }
 .todo-container > .todos > .filters > div > span.active {
   color: rgb(47, 95, 229);
 }
 .todo-container > .todos > .filters span:not(.todo-container > .todos > .filters > span:first-child) {
   cursor: pointer;
+  padding: 9px;
+}
+.todo-container > .todos > .filters span:not(.todo-container > .todos > .filters > span:first-child):hover {
+  color: color-mix(in oklab, rgb(47, 95, 229) 90%, white);
 }
 
 .fade-out {
