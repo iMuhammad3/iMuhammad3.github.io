@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     todoData.forEach(data => {
         const todo = createTodo(data.text, data.completed)
         if(data.completed) completedArr.push(todo)
-        console.log(completedArr, 'DOMcontent')
     })
 
     const allLists = document.querySelectorAll('.todos li')
@@ -68,7 +67,6 @@ todoContainer.addEventListener('click', (e) => {
 
 filters.addEventListener('click', (e) => {
     const allLists = document.querySelectorAll('.todos li')
-    console.log(completedArr, 'filter event listener')
     switch (e.target.id){
         case 'filter-completed' : filter(completedArr, e.target)
             break;
