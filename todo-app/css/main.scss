@@ -41,7 +41,7 @@ li{
     height: 240px;
     position: absolute;
     z-index: -1;
-    background-size: 100%;
+    background-size: 100% 100%;
 }
 
 main{
@@ -88,7 +88,7 @@ main{
         box-shadow: $shadow-lg;
         &>.filters, &>li{
             width: 100%;
-            padding: $md;
+            padding: $sm $md;
         }
         &>li{
             @include display-flex($justify: flex-start);
@@ -97,9 +97,11 @@ main{
             cursor: pointer;
             border-bottom: solid;
             &>p{
-                max-width: 85%;
+                // max-width: 100%;
+                flex-basis: 79%;
                 line-height: 1.4;
                 word-wrap: break-word;
+                hyphens: auto;
             }
             &>.circle{
                 margin-top: -3px;
@@ -140,6 +142,9 @@ main{
             }
             &>.removeBtn{
                 opacity: 0;
+                width: 30px;
+                height: 30px;
+                padding: 6px;
                 margin-left: auto;
                 transition: opacity .2s;
             }
@@ -156,7 +161,6 @@ main{
             &>div{
                 font-weight: 700;
                 @include display-flex();
-                gap: $sm;
                 &>span.active{
                     color: $blue;
                 }
@@ -164,6 +168,10 @@ main{
             // for the items inside 'filter' div that are clickable
             & span:not(&>span:first-child){
                 cursor: pointer;
+                padding: calc($sm - 3px);
+                &:hover{
+                    color: color-mix(in oklab, $blue 90%, white);
+                }
             }
         }
     }
@@ -173,6 +181,9 @@ main{
 .fade-out{
     transform: translateX(700px);
     opacity: 0.3;
+}
+.dragging{
+    opacity: .5;
 }
 
 @media (max-width: 750px) {

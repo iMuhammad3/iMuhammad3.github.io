@@ -44,9 +44,6 @@
             }
             &>.filters{
                 color: map-get($light-theme, dark-grayish-blue);
-                & span:not(&>span:first-child):hover{
-                    color: map-get($light-theme, very-dark-grayish-blue);
-                }
             }
         }
     }

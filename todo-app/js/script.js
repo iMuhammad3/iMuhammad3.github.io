@@ -9,11 +9,16 @@ const completedArr = []
 document.addEventListener('DOMContentLoaded', () => {
     if(localStorage.getItem('darkMode') === 'true'){
         document.body.classList.add('dark')
+        document.querySelectorAll('main header svg').forEach(svg => {
+            svg.classList.toggle('hidden')
+        })
     }
     const todoData = JSON.parse(localStorage.getItem('todoData')) || []
 
-    todoData.forEach(todo => {
-        createTodo(todo.text, todo.completed)
+    todoData.forEach(data => {
+        const todo = createTodo(data.text, data.completed)
+        if(data.completed) completedArr.push(todo)
+        console.log(completedArr, 'DOMcontent')
     })
 
     const allLists = document.querySelectorAll('.todos li')
@@ -63,6 +68,7 @@ todoContainer.addEventListener('click', (e) => {
 
 filters.addEventListener('click', (e) => {
     const allLists = document.querySelectorAll('.todos li')
+    console.log(completedArr, 'filter event listener')
     switch (e.target.id){
         case 'filter-completed' : filter(completedArr, e.target)
             break;
@@ -80,11 +86,11 @@ filters.addEventListener('click', (e) => {
                     list.classList.add('fade-out')
                     setTimeout(()=>{
                         list.remove()
+                        updateLocalStorage()
+                        updateItemsLeft(allLists)
                     }, 500)
                 }
             })
-            updateItemsLeft(allLists)
-            updateLocalStorage()
             break;
     }
 })
@@ -104,6 +110,7 @@ function createTodo(text, completed){
         <svg class="removeBtn" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
     `
     todosEl.insertBefore(li, document.querySelector('.filters'))
+    return li
 }
 
 function checkAsComplete(element){
@@ -220,9 +227,3 @@ function dragLeave(e) {
 }
 
 /* ***** ***** */
-
-// todo
-// filters ✓
-// localStorage ✓
-// drag drop
-// testing
