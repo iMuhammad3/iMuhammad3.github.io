@@ -1,0 +1,499 @@
+// Imports
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+// Variables
+$white: hsl(0, 100%, 100%);
+$bg-main: hsl(224, 100%, 98%);
+$soft-blue: hsl(231, 69%, 60%);
+$soft-red: hsl(0, 94%, 66%);
+$grey: hsl(229, 4%, 50%);
+$dark-blue: hsl(229, 31%, 21%);
+
+$font-family: 'Rubik', sans-serif;
+$font-lg: 40px;
+
+$size-sm: 10px;
+$size-md: 20px;
+$size-lg: 30px;
+
+$radius: 4px;
+
+// mixins
+@mixin display($display: flex, $direction: row, $justify: center, $align: center){
+    display: $display;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+@mixin shadow($left: 0, $top: 0, $blur: 15px, $color: #0002){
+    box-shadow: $left $top $blur $color;
+}
+
+// General
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: $font-family;
+    // border: 1px solid;
+}
+body{
+    color: $dark-blue;
+    background-color: $bg-main;
+    overflow-x: hidden;
+}
+
+h1,h2,h3,h4{
+    font-weight: 500;
+}
+h5,h6{
+    font-weight: 400;
+}
+button{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: inherit;
+    &:hover{
+        opacity: .9;
+    }
+}
+li{
+    list-style: none;
+    &:hover{
+        text-decoration: underline;
+        opacity: .9;
+    }
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+input::placeholder{
+    color: #ccc;
+}
+input{
+    outline: none;
+}
+
+// Main
+
+body > nav{
+    @include display($justify: space-between);
+    padding: 2rem 3rem;
+    &>ul{
+        @include display();
+        gap: $size-lg;
+        cursor: pointer;
+    }
+    & button{
+        color: $bg-main;
+        background-color: $soft-red;
+        padding: .5rem 1.5rem;
+        border-radius: $radius;
+        @include shadow($top: 3px);
+    }
+    #hamburger-menu{
+        display: none;
+        cursor: pointer;
+    }
+}
+
+main{
+    @include display($direction: column, $align: '');
+}
+
+.first-section{
+    @include display();
+    gap: $size-sm;
+    padding: 3rem;
+    // first div of the first section
+    &>:first-child{
+    @include display($direction: column, $align: flex-start);
+    gap: $size-md;
+        &>h1{
+            font-size: $font-lg;
+            font-weight: 500;
+        }
+        &>p{
+            color: $grey;
+            text-wrap: balance;
+        }
+        // div wrapping both buttons
+        &>div{
+            @include display();
+            gap: $size-lg;
+        }
+        & button{
+            padding: .7rem 1rem;
+            border-radius: $radius;
+            background-color: $soft-blue;
+            color: $white;
+            @include shadow($top: 4px, $blur:10px, $color: #2253);
+            // second button
+            &:last-child{
+                background-color: #dde;
+                color: $dark-blue;
+            }
+        }
+    }
+    // second div of the first section
+    &>:nth-child(2){
+        position: relative;
+        width: 100%;
+        max-height: 500px;
+        &::after{
+            content: '';
+            position: absolute;
+            background-color: $soft-blue;
+            inset: 0 0 0 0;
+            height: 300px;
+            width: 100%;
+            border-radius: 9999px 0 0 9999px;
+            z-index: -1;
+            transform: translate(30%, 50%);
+        }
+    }
+}
+
+// second section
+.second-section{
+    @include display($direction: column);
+    gap: $size-md;
+    
+    padding: 3rem;
+    &>.heading{
+        @include display($direction: column);
+        max-width: 500px;
+        text-align: center;
+        gap: $size-sm;
+        &>p{
+            color: $grey;
+        }
+    }
+    &>.info{
+        @include display();
+        &>*{
+            padding: calc($size-md - 3px) $size-lg;
+            border-bottom: 1px solid $grey;
+            color: $grey;
+            cursor: pointer;
+            &.active{
+                color: $dark-blue;
+                border-bottom: 3px solid $soft-red;
+            }
+            &:hover{
+                color: $dark-blue;
+            }
+        }
+    }
+    &>.second-section-third-div{
+        @include display();
+        gap: $size-lg;
+        width: 100%;
+
+        & >:nth-child(2){
+            @include display($direction: column);
+            width: 50%;
+            gap: $size-md;
+            &>p{
+                max-width: 500px;
+                text-wrap: balance;
+                text-align: center;
+                color: $grey;
+            }
+        }
+        & button{
+            background-color: $soft-blue;
+            color: $white;
+            padding: .4rem .8rem;
+            border-radius: $radius;
+            @include shadow();
+        }
+    }
+    & .second-svg{
+        @include shadow();
+        height: 400px;
+        width: min(50%, 540px);
+        padding: 0;
+        border-radius: $size-sm;
+        overflow: hidden;
+        &>svg{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.third-section{
+    padding: 2rem 2rem 4.3rem;
+    margin: 80px 0;
+    @include display($direction: column);
+    gap: $size-md;
+    & p{
+        color: $grey;
+        width: 450px;
+        text-align: center;
+    }
+    &>.extensions{
+        @include display();
+        gap: $size-lg;
+        &>*{
+            @include display($direction: column);
+            @include shadow();
+            padding: 1.5rem 1rem;
+            border-radius: $size-sm;
+            gap: $size-sm;
+            &>small{
+                color: $grey;
+            }
+            &>button{
+                margin-top: $size-md;
+                font-size: 14px;
+                background-color: $soft-blue;
+                color: $white;
+                padding: .4rem .8rem;
+                border-radius: $radius;
+                @include shadow();
+            }
+        }
+        // firefox extension
+        &>:nth-child(2){
+            transform: translateY($size-lg + 10px);
+        }
+        // opera extension
+        &>:nth-child(3){
+            transform: translateY($size-lg * 2 + 10px);
+        }
+    }
+}
+
+.fourth-section{
+    @include display($direction: column);
+    gap: $size-md;
+    align-self: center;
+    margin: 80px 0;
+    width: min(450px, 70%);
+    &>p{
+        text-align: center;
+        color: $grey;
+    }
+    &>.accordion-wrapper{
+        margin: 30px 0;
+        cursor: pointer;
+        width: 100%;
+        &>.accordion{
+            border-bottom: 1px solid $grey;
+            padding: 1rem .5rem 0 0;
+        }
+        & .accordion-header{
+            @include display($justify: space-between);
+        }
+        & svg{
+            transition: transform .4s;
+            &.rotate{
+                transform: rotate(180deg);
+            }   
+        }
+        & .accordion-body{
+            color: $grey;
+            margin: .5rem;
+            max-height: 0; 
+            overflow: hidden;
+            transition: max-height 0.3s ease; 
+            &.showAccordionBody{
+                max-height: 150px !important;
+                overflow: visible;
+            }
+        }
+        &>.accordion:first-child{
+            border-top: 1px solid $grey;
+        }
+    }
+    &>button{
+        background-color: $soft-blue;
+        color: $white;
+        padding: .5rem .8rem;
+        border-radius: $radius;
+        @include shadow();
+    }
+}
+
+.fifth-section{
+    @include display($direction: column);
+    gap: $size-md;
+    background-color: $soft-blue;
+    color: $white;
+    min-height: 240px;
+    &>h2{
+        width: min(90%, 320px);
+        text-align: center;
+    }
+    &>div{
+        @include display();
+        gap: $size-sm;
+    }
+    & input[type=email]{
+        padding: .6rem 1rem;
+        width: 13rem;
+        border: none;
+        border-radius: $radius;
+        @include shadow($color: #3332);
+    }
+    & button{
+        background-color: $soft-red;
+        color: $white;
+        padding: .5rem .8rem;
+        border-radius: $radius;
+        @include shadow();
+    }
+}
+
+main > footer{
+    @include display($justify: space-around);
+    background-color: $dark-blue;
+    color: $white;
+    padding: 2rem;
+    &>div{
+        @include display();
+        gap: $size-md;
+    }
+    & li{
+        font-size: 14px;
+    }
+    // all li's and svg's inside footer except 'bookmark'
+    & li, & svg:not(div:first-child>svg){
+        cursor: pointer;
+        &:hover{
+            opacity: .9;
+        }
+    }
+}
+
+// modal
+.modal-container{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    inset: 0 0 0 0;
+    background-color: color-mix(in oklab, rgba(0, 0, 0, 0.8) 70%, $soft-blue);
+    padding: 2rem 0;
+    &>.modal{
+        color: $white;
+        width: 80%;
+        height: 100%;
+        margin: 0 auto;
+        @include display($direction: column,$align:'');
+        gap: $size-lg;
+        &>header{
+            @include display($justify: space-between);
+            &>#modalCloseBtn{
+                fill: $white;
+                cursor: pointer;
+            }
+        }
+        &>nav{
+            @include display($direction: column);
+            font-size: $size-md;
+            &>li{
+                padding: $size-md;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid;
+                cursor: pointer;
+            }
+            &>button{
+                margin-top: $size-md;
+                color: $white;
+                border: 2px solid;
+                width: 100%;
+                padding: $size-sm;
+                border-radius: $radius;
+                transition: background-color .4s, color .4s;
+                &:hover{
+                    background-color: $white;
+                    color: $dark-blue;
+                }
+            }
+        }
+        &>footer{
+            margin-top: auto;
+            @include display();
+            gap: $size-lg;
+            transform: translateY(-$size-lg);
+            &>svg{
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+// scroll to top button
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    right: $size-md;
+    bottom: $size-md;
+    background-color: $dark-blue;
+    padding: .8rem 1rem;
+    border-radius: 50%;
+    @include shadow(0, 4px, 10px, #0004);
+    &>svg{
+        transform: rotate(180deg);
+        fill: $white;
+        height: 1.3em;
+    }
+}
+
+// media queries
+@media (max-width: 1156px){
+    .first-section{
+        flex-direction: column;
+        &>:first-child{
+            align-items: center;
+            text-align: center;
+        }
+        &> :nth-child(2){
+            order: -1;
+        }
+    }
+    .second-section{
+        padding: 0 .5rem;
+        &>.second-section-third-div{
+            flex-direction: column;
+            &>*{
+                width: min(100%, 540px);
+            }
+            & >:nth-child(2){
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 720px){
+    body > nav > ul{
+        display: none;
+    }
+    #hamburger-menu{
+        display: block !important;
+    }
+    .second-section > .info{
+        @include display($direction: column);
+    }
+    .third-section{
+        &>.extensions{
+            flex-direction: column;
+            &>*{
+                transform: translateY(0) !important;
+            }
+        }
+    }
+    main > footer{
+        flex-direction: column;
+        gap: $size-md;
+        &>div:first-child{
+            flex-direction: column;
+        }
+    }
+}
