@@ -7,8 +7,92 @@
     <link rel="icon" type="image/png" href="./images/p.png" sizes="16x16">
 </head>
 <body>
+
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body{
+            min-height: 100dvh;
+            text-align: center;
+            color: #114;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        h1{
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        main{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+        a, a:active, a:visited, a:link{
+            text-decoration: none;
+        }
+        section{
+            background-color: rgb(3, 16, 26);
+            color: #f4f4fa;
+            border: 2px solid black;
+            width: 350px;
+            cursor: pointer;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 0 15px -3px #1134;
+            transition: transform .5s;
+        }
+        section:hover{
+            transform: translateY(-2px);
+        }
+        img{
+            max-width: 100%;
+            transition: filter .5s;
+        }
+        img:hover{
+            filter: contrast(1.1);
+        }
+        h4{
+            padding: 1rem;
+            text-shadow: 2px 2px 2px #11a;
+        }
+    </style>
     
-    <div id="root"></div>
+    <h1>These are my projects</h1>
+
+    <main>
+        <a href="./todo-app/" target="_blank">
+            <section>
+                <img src="/images/todo-app.png" alt="">
+                <h4>Todo App</h4>
+            </section>
+        </a>
+        <a href="./url-shortener-landing-page/">
+            <section>
+            <img src="/images/url-shortener.png" alt="">
+            <h4>Url Shortener Landing Page</h4>
+        </section>
+        </a>
+        <a href="./bookmark-landing-page/">
+            <section>
+            <img src="/images/bookmark.png" alt="">
+            <h4>Bookmark Landing Page</h4>
+        </section>
+        </a>
+        <a href="./rock-paper-scissors/">
+            <section>
+            <img src="/images/rock-paper-scissors.png" alt="">
+            <h4>Rock Paper Scissors</h4>
+        </section>
+        </a>
+    </main>
 
 </body>
 </html>
