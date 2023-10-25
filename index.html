@@ -61,32 +61,28 @@
         }
     </style>
 
-    <main>
-        <a href="./todo-app/" target="_blank">
-            <section>
-                <img src="/images/todo-app.png" alt="">
-                <h4>Todo App</h4>
-            </section>
-        </a>
-        <a href="./url-shortener-landing-page/" target="_blank">
-            <section>
-            <img src="/images/url-shortener.png" alt="">
-            <h4>Url Shortener Landing Page</h4>
-        </section>
-        </a>
-        <a href="./bookmark-landing-page/" target="_blank">
-            <section>
-            <img src="/images/bookmark.png" alt="">
-            <h4>Bookmark Landing Page</h4>
-        </section>
-        </a>
-        <a href="./rock-paper-scissors/" target="_blank">
-            <section>
-            <img src="/images/rock-paper-scissors.png" alt="">
-            <h4>Rock Paper Scissors</h4>
-        </section>
-        </a>
-    </main>
+    <main></main>
+
+    <script type="module">
+        import Projects from './projects.js'
+        Projects.forEach(project => {
+            const {name, preview_img, path} = project
+            const aTag = document.createElement('a')
+            aTag.href = path
+            aTag.target = '_blank'
+            const section = document.createElement('section')
+            const img = document.createElement('img')
+            img.src = preview_img
+            img.alt = name
+            const h4 = document.createElement('h4')
+            h4.innerText = name
+            section.appendChild(img)
+            section.appendChild(h4)
+            aTag.appendChild(section)
+            document.querySelector('main').appendChild(aTag)
+        })
+    </script>
+
 
 </body>
 </html>
