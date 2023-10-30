@@ -24,4 +24,9 @@ export default [
         path: "./growth-landing-page/",
         preview_img: "/images/growth-landing-page.png",
     },
+    {
+        name: "Advice Generator",
+        path: "./advice-generator/",
+        preview_img: "/images/advice-generator.png",
+    },
 ]
