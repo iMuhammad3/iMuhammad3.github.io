@@ -29,4 +29,9 @@ export default [
         path: "./advice-generator/",
         preview_img: "/images/advice-generator.png",
     },
+    {
+        name: "Countries",
+        path: "./countries/dist",
+        preview_img: "/images/countries.png",
+    },
 ]
